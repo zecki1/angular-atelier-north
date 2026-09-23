@@ -9,7 +9,7 @@
     "test:ci": "ng test --watch=false --coverage",
     "e2e": "playwright test",
     "e2e:ci": "playwright test",
-    "analyze": "ng build --source-map && source-map-explorer \"dist/angular-atelier-north/browser/**/*.js\" --json bundle-analysis/stats.json"
+    "analyze": "ng build --source-map && source-map-explorer \"dist/angular-atelier-north/browser/**/*.js\" --json bundle-analysis/stats.json --no-border-checks"
   },
   "private": true,
   "packageManager": "npm@11.12.1",
