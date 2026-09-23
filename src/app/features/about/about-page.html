@@ -1,0 +1,98 @@
+<section class="px-6 pb-16 pt-32 md:px-10 md:pt-40">
+  <p class="mb-3 text-sm uppercase tracking-[0.3em] text-mute">( Sobre )</p>
+  <h1 class="max-w-4xl font-display text-[clamp(3rem,9vw,8rem)] uppercase leading-[0.92]">
+    Um estúdio que<br />acredita em craft<span class="text-acid">.</span>
+  </h1>
+</section>
+
+<section class="px-6 pb-24 md:px-10 md:pb-32">
+  <div class="grid gap-10 md:grid-cols-12">
+    <p class="text-lg leading-relaxed text-cream/80 md:col-span-7">
+      Desde 2019 unimos estratégia, design e tecnologia para construir marcas que se movem —
+      literalmente. Animamos, desenhamos e codamos cada detalhe, porque acreditamos que é nos
+      detalhes que uma ideia vira experiência.
+    </p>
+    <p class="text-lg leading-relaxed text-cream/70 md:col-span-5">
+      Somos uma equipe enxuta e transversal: direção de arte, interação, motion e
+      desenvolvimento trabalhando no mesmo espaço. Sem retrabalho, sem pontas soltas.
+    </p>
+  </div>
+</section>
+
+<section class="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
+  <div class="grid grid-cols-2 gap-x-8 gap-y-14 md:grid-cols-4">
+    @for (stat of stats; track stat.label) {
+      <app-counter [value]="stat.value" [suffix]="stat.suffix" [label]="stat.label" />
+    }
+  </div>
+</section>
+
+<section class="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
+  <p class="mb-3 text-xs uppercase tracking-[0.25em] text-mute">( Linha do tempo )</p>
+  <h2 class="mb-14 font-display text-4xl md:text-6xl">Como chegamos até aqui</h2>
+
+  <ol class="relative border-l border-white/15 pl-6 md:pl-10">
+    @for (item of timeline; track item.year; let index = $index) {
+      <li apReveal class="relative pb-14 last:pb-0">
+        <span
+          class="absolute -left-[29px] top-1.5 h-3 w-3 rounded-full border border-acid bg-ink md:-left-[45px]"
+          aria-hidden="true"
+        ></span>
+        <div class="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
+          <span class="font-display text-2xl font-bold text-acid md:min-w-[8ch]">
+            {{ item.year }}
+          </span>
+          <div>
+            <h3 class="text-xl font-bold uppercase tracking-wide">{{ item.title }}</h3>
+            <p class="mt-1 max-w-2xl text-cream/70">{{ item.text }}</p>
+          </div>
+        </div>
+      </li>
+    }
+  </ol>
+</section>
+
+<section class="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
+  <p class="mb-3 text-xs uppercase tracking-[0.25em] text-mute">( Equipe )</p>
+  <h2 class="mb-14 font-display text-4xl md:text-6xl">As mentes por trás</h2>
+
+  <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+    @for (member of team(); track member.id) {
+      <figure apReveal class="group">
+        <div class="aspect-[4/5] overflow-hidden bg-white/5">
+          <img
+            [src]="member.image"
+            [alt]="member.name"
+            [width]="600"
+            [height]="750"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+        </div>
+        <figcaption class="pt-4">
+          <span class="font-display text-xl">{{ member.name }}</span>
+          <span class="mt-1 block text-sm uppercase tracking-widest text-mute">
+            {{ member.role }}
+          </span>
+        </figcaption>
+      </figure>
+    }
+  </div>
+</section>
+
+<section class="border-t border-white/10 px-6 py-24 md:px-10 md:py-32">
+  <h2
+    apReveal
+    class="max-w-3xl font-display text-[clamp(2.5rem,7vw,6rem)] uppercase leading-[0.95]"
+  >
+    Vai dar trabalho<span class="text-acid">?</span> Sim.<br />Vale a pena<span class="text-acid">?</span>
+    Sempre.
+  </h2>
+  <a
+    apReveal
+    routerLink="/contact"
+    class="mt-12 inline-block rounded-full bg-acid px-10 py-5 font-display text-sm font-bold uppercase tracking-widest text-ink transition-transform hover:scale-105"
+    >Falar com a gente</a
+  >
+</section>
