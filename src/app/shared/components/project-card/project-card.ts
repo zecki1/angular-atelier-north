@@ -26,9 +26,9 @@ import { RevealDirective } from '../../directives/reveal.directive';
         </span>
       </div>
       <div class="flex items-baseline justify-between gap-4 pt-4">
-        <h3 class="font-display text-xl transition-colors group-hover:text-acid md:text-2xl">
+        <h2 class="font-display text-xl transition-colors group-hover:text-acid md:text-2xl">
           {{ project().title }}
-        </h3>
+        </h2>
         <span class="shrink-0 text-sm text-mute">{{ project().year }}</span>
       </div>
       <p class="mt-1 text-sm text-mute">

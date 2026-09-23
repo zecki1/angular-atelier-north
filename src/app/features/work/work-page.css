@@ -1,3 +1,13 @@
 :host {
   display: block;
 }
+
+.hero-cover {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cover {
+    opacity: 1;
+  }
+}
