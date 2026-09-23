@@ -24,3 +24,22 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Imagens de referência/screenshots (não vão pro repo — pesadas)
+/Capa_paginainicial.png
+/Timeline.png
+/Trabalho.png
+*.png
+
+# Mock local (servido via public/)
+/public/mock
+
+# Relatórios Lighthouse/CI que guardamos fora do dist
+/.lighthouseci
+/lhci-*
+
+# réplicas de ajustes (não do repo)
+
+src/app/features/home/home-page.css
+
+tmp/
