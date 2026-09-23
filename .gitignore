@@ -40,6 +40,4 @@ Thumbs.db
 
 # réplicas de ajustes (não do repo)
 
-src/app/features/home/home-page.css
-
 tmp/
