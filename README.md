@@ -7,6 +7,55 @@
 
 Site de agência nível Awwwards: smooth scroll, cursor custom, marquee, preloader e WebGL leve.
 
+## Design — decisão e intenção
+
+> Pilar **Showcase**: prova de craft de front-end (animação, micro-interações e narrativa). Cada escolha abaixo tem um "para quê" — nada é decorativo solto.
+
+### Conceito
+
+**"Atelier North — design que move marcas"** é um estúdio fictício de São Paulo. O site se comporta como um *case* de estúdio Awwwards: escuro, cinematográfico e editorial, onde o movimento do scroll conta a história de um ateliê que transforma marca em experiência. A intenção é **vender front-end craft** (o pilar do plano): quem navega deve sentir que animação, tipografia e micro-interações são o produto. O tom de voz é irreverente e direto — "Vai dar trabalho? Sim. Vale a pena? Sempre." — consistente com a persona de estúdio de autor.
+
+### Identidade visual
+
+| Token | Valor | Para quê |
+|-------|-------|----------|
+| `ink` `#0b0b0d` / `ink-soft` `#141417` | tinta quase preta | Palco escuro que faz a "tinta" e os acessos saltarem; base do clima cinematográfico |
+| `cream` `#f3efe6` | creme/off-white | Texto principal — contraste suave (não branco puro), tom de papel de ateliê |
+| `acid` `#d8ff3e` | verde-ácido | Ação: CTA, links ativos, seleção, pontos de timeline. Energia (GTA VI/Awwwards) em dose mínima — **delata o que é clicável** |
+| `clay` `#ff5c39` | terracota | Erro/estado crítico (formulário) — erro nunca é "vermelho de sistema", é do mesmo universo cromático |
+| `mute` `#9b9ba3` | cinza | Microetiquetas e metadados — hierarquia sem gritar |
+
+- **Tipografia**: `Syne` (display) para títulos gigantes em caixa alta com `leading-[0.92]`; `Space Grotesk` (corpo). Contraste brutal de escala entre o título em `clamp(3rem↔12rem)` e as microetiquetas `uppercase tracking-[0.3em]` — o vocabulário visual de site de agência.
+- **Formas e consistência**: botões-pílula `rounded-full`; seções separadas por `border-white/10`; rótulos de seção no padrão `( … )`; `::selection` e `:focus-visible` em acid (a cor de ação é sempre a mesma, em qualquer contexto).
+
+### Estratégia de movimento
+
+| Peça | Implementação | Intenção |
+|------|---------------|----------|
+| Preloader | Marca "Atelier North®" + estado de "ready" | Ritual de entrada — anuncia que o site é "trabalho" antes de abrir o hero |
+| Hero | `SplitText` em linhas com máscara + `stagger` após o preloader; capa 1920×1080 em WebP com parallax de `scale/y` (scrub) | O nome da marca é um **ato**: entra em camadas, com timing de abertura de filme |
+| Showcase | `ScrollTrigger` com `pin` que troca de slide com o progresso do scroll + parallax das imagens | Rolagem vira **edição**: o visitante "empurra" o portfólio com o próprio scroll |
+| Cursor custom | Anel + ponto acid, `mix-blend-difference`, `quickTo` (lerp) e ampliação sobre interativos | Maestria de "pointer" — a mão responde a cada elemento; só ativa em `pointer: fine` |
+| Smooth scroll (Lenis) + `apReveal` | Lenis substitui o scroll nativo; blocos revelam ao entrar na viewport | Troca o "pulo" do scroll nativo por fluidez constante — a assinatura Awwwards |
+| Contadores & timeline | `app-counter` anima os números; timeline editorial com pontos acid | Concretiza a narrativa "desde 2019" — o passado vira prova |
+| Marquee | Clientes em loop infinito (CSS `--marquee-duration`) | Sensação de vitrine viva e em movimento permanente |
+
+### Acessibilidade como regra (não melhoria)
+
+- Guarda `canAnimate()` + CSS `@media (prefers-reduced-motion: reduce)` **zeram** animação; cursor custom e smooth scroll só existem com `pointer: fine`.
+- Textos decorativos com `aria-hidden` + conteúdo real em `sr-only`; slides do showcase alternam `aria-hidden` conforme o progresso real.
+- Contraste pensado: `cream/70–80` sobre `ink`; foco visível em acid. Craft que **não exclui** (axe roda no CI).
+
+### Dados e conteúdo (sem backend próprio)
+
+- **Dados**: JSONPlaceholder (projetos/clientes/depoimentos), Picsum (imagens WebP 1920×1080 / 1200×900) e Open-Meteo (clima) — tudo público, zero backend proprietário.
+- **Leads**: Supabase (`leads`, slug `agency`) com **fallback local** quando `VITE_ROLE=demo` — o formulário funciona sempre, mesmo sem credenciais.
+- **Racional de performance**: WebP + `fetchpriority="high"` no hero, `loading="lazy"` no resto, fontes async — ninguém paga o custo do "cinema" no primeiro paint.
+
+### Decisão consciente (trade-off)
+
+GSAP + Lenis custam ~300ms de JS na simulação mobile — o preço é a **sensação** Awwwards. A resposta foi otimizar o que dá (WebP, preload, fontes) e documentar o resto, em vez de cortar a assinatura visual. Detalhe no [case study](./docs/atelier-north-case.md).
+
 ## Stack
 
 - **Angular 22** — standalone, signals, zoneless, OnPush por padrão
@@ -76,7 +125,7 @@ Em resumo: menos infraestrutura, mais velocidade de feedback e um alinhamento na
 - [x] E2E Playwright + axe sem violações críticas (3/3)
 - [x] Lighthouse em andamento (perf mobile ~0.80 → meta ≥ 0.9)
 - [x] Responsivo (mobile/tablet/desktop)
-- [x] README com screenshot + "o que aprendi" + decisão de teste
+- [x] README com screenshot + "o que aprendi" + decisão de teste + decisão de design
 - [x] Supabase configurado (quando aplicável)
 - [ ] PR revisado + merged + release por milestone
 
@@ -90,7 +139,7 @@ Em resumo: menos infraestrutura, mais velocidade de feedback e um alinhamento na
 
 ## Screenshots
 
-As imagens de referência estão **localmente** (`.gitignore`, fora do repo por peso) e nortearam o design:
+As imagens de referência estão **localmente** (`.gitignore`, fora do repo por peso) e nortearam o design (a intenção e as decisões completas estão na seção [Design](#design--decisão-e-intenção)):
 
 | Imagem | O que referencia | Decisão de design |
 |--------|------------------|--------------------|
