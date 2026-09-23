@@ -1,0 +1,56 @@
+<section class="px-6 pb-24 pt-32 md:px-10 md:pt-40">
+  <p class="mb-3 text-sm uppercase tracking-[0.3em] text-mute">( Trabalho )</p>
+  <h1 class="max-w-3xl font-display text-[clamp(3rem,9vw,8rem)] uppercase leading-[0.92]">
+    Seleção de<br />projetos<span class="text-acid">.</span>
+  </h1>
+  <p class="mt-8 max-w-xl text-lg text-cream/70">
+    Uma curadoria do que produzimos — cada projeto é uma história de estratégia, design e
+    tecnologia. Dados vêm de API pública, com filtro e paginação ao vivo.
+  </p>
+</section>
+
+<section class="px-6 pb-32 md:px-10">
+  <div class="mb-12 flex flex-wrap gap-3" role="group" aria-label="Filtro por categoria">
+    @for (item of categories(); track item) {
+      <button
+        type="button"
+        class="rounded-full border px-4 py-2 text-sm uppercase tracking-widest transition-colors"
+        [class.bg-acid]="category() === item"
+        [class.text-ink]="category() === item"
+        [class.border-transparent]="category() === item"
+        [class.border-white/15]="category() !== item"
+        [class.text-cream/70]="category() !== item"
+        [class.hover:border-acid]="category() !== item"
+        [class.hover:text-acid]="category() !== item"
+        [attr.aria-pressed]="category() === item"
+        (click)="select(item)"
+      >
+        {{ item }}
+      </button>
+    }
+  </div>
+
+  @if (projects(); as list) {
+    @if (paged().length > 0) {
+      <div class="grid gap-x-8 gap-y-16 md:grid-cols-2">
+        @for (project of paged(); track project.id) {
+          <app-project-card [project]="project" />
+        }
+      </div>
+    } @else {
+      <p class="py-20 text-center text-mute">Nenhum projeto nesta categoria ainda.</p>
+    }
+
+    @if (totalPages() > 1) {
+      <div class="mt-16">
+        <app-pagination [page]="page()" [totalPages]="totalPages()" (pageChange)="setPage($event)" />
+      </div>
+    }
+  } @else {
+    <div class="grid gap-x-8 gap-y-16 md:grid-cols-2" aria-hidden="true">
+      @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+        <div class="aspect-[4/3] animate-pulse rounded-none bg-white/5"></div>
+      }
+    </div>
+  }
+</section>
