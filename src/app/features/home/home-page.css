@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.hero-cover {
+  opacity: 0;
+}
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.hero-reveal.is-ready {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cover,
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
