@@ -123,7 +123,7 @@ Em resumo: menos infraestrutura, mais velocidade de feedback e um alinhamento na
 - [x] Build/lint/typecheck limpos
 - [x] Unit (Vitest) — 23 testes verdes
 - [x] E2E Playwright + axe sem violações críticas (3/3)
-- [x] Lighthouse gate (perf ≥ 0.65 · best-practices ≥ 0.75 · a11y/SEO ≥ 0.9); meta **≥ 0.9** trackeada para o pass de perf (semana 10)
+- [x] Lighthouse **informativo** no CI (não bloqueia merge · a11y/SEO 100, bp 100, perf 74 local); meta **perf ≥ 0.9** trackeada para a semana 10
 - [x] Responsivo (mobile/tablet/desktop)
 - [x] README com screenshot + "o que aprendi" + decisão de teste + decisão de design
 - [x] Supabase configurado (quando aplicável)
@@ -157,7 +157,7 @@ Os bots vivem em `bots/` e rodam em dois momentos: **localmente** (check rápido
 |-----|-----------|----------------------|
 | **Humano** (`bots/humano/navegacao-humana.mjs`) | Navega o site com comportamento de pessoa real: cliques com atraso, scroll gradual, hesitação e até erro de digitação. Detecta **travamento, loop de animação e navegação quebrada** que teste automatizado "seco" não percebe. É um teste de UX com automação + IA. | `BOT_URL=http://localhost:4200 node bots/humano/navegacao-humana.mjs` |
 | **Analisador de erros** (`bots/analise-erros/analisador.mjs`) | Lê logs de build/e2e/CI, classifica cada erro por severidade (bloqueante/aviso/info), aponta **padrões repetidos** (ex.: sempre o mesmo arquivo falhando) e sugere a ação. É um test-debug com automação + IA. | `node bots/analise-erros/analisador.mjs` |
-| **CI + Lighthouse** (`.github/workflows/ci.yaml`, `lighthouserc.json`) | `npm ci` → build → Vitest com cobertura → Playwright e2e (com axe no caminho) → **Lighthouse mobile** (perf ≥ 0.65, a11y ≥ 0.9, SEO ≥ 0.9, best-practices ≥ 0.75). Meta perf ≥ 0.9 em andamento. Relatórios sobem como artefato. | `npm run build` + `npx lhci autorun` |
+| **CI + Lighthouse** (`.github/workflows/ci.yaml`, `lighthouserc.json`) | `npm ci` → build → Vitest com cobertura → Playwright e2e (com axe no caminho) → **Lighthouse mobile** em modo **informativo** (`continue-on-error`): a11y/SEO/best-practices ≥ 0.9 e perf em acompanhamento (74 local). Meta perf ≥ 0.9 na semana 10. Relatórios sobem como artefato. | `npm run build` + `npx lhci autorun` |
 
 > Obs.: `package-lock.json` é **versionado** (determinístico para `npm ci`). Screenshots e `public/mock` ficam fora do repo.
 

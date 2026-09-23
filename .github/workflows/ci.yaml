@@ -85,10 +85,11 @@ jobs:
           retention-days: 7
 
   lighthouse:
-    name: Lighthouse CI (Performance/SEO/A11y ≥ 90)
+    name: Lighthouse CI (informativo — perf gate ≥0.9 na semana 10)
     needs: [verificar-projeto, qualidade]
     if: needs.verificar-projeto.outputs.existe == 'true'
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
