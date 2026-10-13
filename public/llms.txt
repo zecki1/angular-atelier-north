@@ -1,0 +1,26 @@
+# Atelier North
+
+> Atelier North é um estúdio criativo de São Paulo que une estratégia, design e tecnologia para construir marcas em movimento — identidade, web, motion e produto digital.
+
+## Páginas
+
+- [Início](https://angular-atelier-north.vercel.app/)
+- [Trabalho](https://angular-atelier-north.vercel.app/work)
+- [Sobre](https://angular-atelier-north.vercel.app/about)
+- [Contato](https://angular-atelier-north.vercel.app/contact)
+
+## Resumo por seção
+
+- **Início**: hero institucional, clientes, projetos em destaque, depoimentos e chamada para contato.
+- **Trabalho**: portfólio de projetos com filtro por categoria e paginação ao vivo.
+- **Sobre**: manifesto do estúdio, números, linha do tempo, equipe e chamada para contato.
+- **Contato**: formulário de lead, e-mail e redes sociais.
+
+## Sobre o conteúdo de demonstração
+
+Os dados de projetos, equipe, clientes e depoimentos são de demonstração, servidos por APIs abertas (JSONPlaceholder, Picsum e Open-Meteo). Nenhuma informação pessoal é coletada.
+
+## Contato
+
+- E-mail: ola@ateliernorth.studio
+- Local: São Paulo — Brasil (remoto e presencial)

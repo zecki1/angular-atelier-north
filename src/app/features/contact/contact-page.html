@@ -2,13 +2,13 @@
   <div class="grid gap-16 lg:grid-cols-12">
     <div class="lg:col-span-5">
       <p class="mb-3 text-sm uppercase tracking-[0.3em] text-mute">( Contato )</p>
-      <h1 class="font-display text-[clamp(3rem,9vw,8rem)] uppercase leading-[0.92]">
+      <h1 class="font-display text-[clamp(2.5rem,4.5vw,4.3rem)] uppercase leading-[0.92]">
         Vamos<br />conversar<span class="text-acid">.</span>
       </h1>
 
       <p class="mt-8 max-w-md text-lg leading-relaxed text-cream/70">
-        Conte sobre o seu projeto — pode ser um briefing completo ou só uma faísca de ideia.
-        A gente transforma em algo grande.
+        Conte sobre o seu projeto — pode ser um briefing completo ou só uma faísca de ideia. A gente
+        transforma em algo grande.
       </p>
 
       <div class="mt-12 space-y-6 text-cream/80">
@@ -65,12 +65,7 @@
           </div>
         }
         @default {
-          <form
-            [formGroup]="form"
-            (ngSubmit)="submit()"
-            class="space-y-8"
-            novalidate
-          >
+          <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-8" novalidate>
             <div>
               <label for="nome" class="mb-2 block text-xs uppercase tracking-[0.25em] text-mute">
                 Nome
@@ -107,7 +102,10 @@
             </div>
 
             <div>
-              <label for="mensagem" class="mb-2 block text-xs uppercase tracking-[0.25em] text-mute">
+              <label
+                for="mensagem"
+                class="mb-2 block text-xs uppercase tracking-[0.25em] text-mute"
+              >
                 Mensagem
               </label>
               <textarea

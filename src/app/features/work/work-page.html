@@ -1,9 +1,27 @@
-<section class="px-6 pb-24 pt-32 md:px-10 md:pt-40">
-  <p class="mb-3 text-sm uppercase tracking-[0.3em] text-mute">( Trabalho )</p>
-  <h1 class="max-w-3xl font-display text-[clamp(3rem,9vw,8rem)] uppercase leading-[0.92]">
+<section class="relative overflow-hidden px-6 pb-24 pt-32 md:px-10 md:pt-40">
+  <figure class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <img
+      [src]="heroCover"
+      alt=""
+      data-cover
+      class="hero-cover h-full w-full object-cover"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/75 to-ink"></div>
+  </figure>
+
+  <p apReveal class="relative mb-3 text-sm uppercase tracking-[0.3em] text-mute">( Trabalho )</p>
+  <h1
+    apReveal
+    class="relative max-w-3xl font-display text-[clamp(3rem,9vw,8rem)] uppercase leading-[0.92]"
+  >
     Seleção de<br />projetos<span class="text-acid">.</span>
   </h1>
-  <p class="mt-8 max-w-xl text-lg text-cream/70">
+  <p apReveal class="relative mt-8 max-w-xl text-lg text-cream/70">
     Uma curadoria do que produzimos — cada projeto é uma história de estratégia, design e
     tecnologia. Dados vêm de API pública, com filtro e paginação ao vivo.
   </p>
@@ -43,7 +61,11 @@
 
     @if (totalPages() > 1) {
       <div class="mt-16">
-        <app-pagination [page]="page()" [totalPages]="totalPages()" (pageChange)="setPage($event)" />
+        <app-pagination
+          [page]="page()"
+          [totalPages]="totalPages()"
+          (pageChange)="setPage($event)"
+        />
       </div>
     }
   } @else {

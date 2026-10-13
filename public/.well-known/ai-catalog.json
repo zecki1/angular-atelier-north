@@ -1,0 +1,26 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Atelier North — Estúdio criativo",
+    "identifier": "did:web:angular-atelier-north.vercel.app",
+    "documentationUrl": "https://angular-atelier-north.vercel.app/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:angular-atelier-north.vercel.app:content:site",
+      "displayName": "Atelier North — conteúdo do site",
+      "type": "text/markdown",
+      "url": "https://angular-atelier-north.vercel.app/llms.txt",
+      "description": "Conteúdo público do estúdio Atelier North — portfólio, manifesto, linha do tempo, equipe e contato — em Markdown para leitura e extração por agentes.",
+      "tags": ["design", "portfolio", "web", "motion", "pt-BR"],
+      "capabilities": ["PortfolioLookup", "StudioInfo", "ContactLookup"],
+      "representativeQueries": [
+        "o que é o estúdio Atelier North",
+        "quais projetos estão no portfólio",
+        "como entrar em contato com o estúdio"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-09-23T00:00:00Z"
+    }
+  ]
+}
