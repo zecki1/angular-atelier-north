@@ -41,3 +41,5 @@ Thumbs.db
 # réplicas de ajustes (não do repo)
 
 tmp/
+.vercel
+.env*

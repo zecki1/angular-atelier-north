@@ -31,7 +31,7 @@ import { gsap, isPointerFine } from '../../../core/animation';
 export class Cursor implements AfterViewInit, OnDestroy {
   private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  readonly active = signal(false);
+  readonly active = signal(isPointerFine());
 
   private onMove = (event: PointerEvent): void => {
     this.ringX(event.clientX);

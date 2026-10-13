@@ -3,7 +3,7 @@ import { AfterViewInit, DestroyRef, Directive, ElementRef, inject } from '@angul
 import { gsap, canAnimate, ScrollTrigger } from '../../core/animation';
 
 @Directive({
-  selector: '[apReveal]',
+  selector: '[appReveal]',
   standalone: true,
 })
 export class RevealDirective implements AfterViewInit {

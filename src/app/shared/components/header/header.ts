@@ -115,7 +115,11 @@ export class Header {
   toggleMenu(): void {
     const next = !this.menuOpen();
     this.menuOpen.set(next);
-    next ? this.smoothScroll.stop() : this.smoothScroll.start();
+    if (next) {
+      this.smoothScroll.stop();
+    } else {
+      this.smoothScroll.start();
+    }
   }
 
   closeMenu(): void {
