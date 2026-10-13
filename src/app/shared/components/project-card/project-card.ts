@@ -8,7 +8,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
   standalone: true,
   imports: [RevealDirective],
   template: `
-    <article apReveal class="group" data-cursor="media">
+    <article appReveal class="group" data-cursor="media">
       <div class="relative aspect-[4/3] overflow-hidden bg-white/5">
         <img
           [src]="project().image"
