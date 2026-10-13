@@ -7,7 +7,7 @@
 ![Unit Tests](https://img.shields.io/badge/Unit-69%2F69%20passing-brightgreen)
 ![ESLint](https://img.shields.io/badge/ESLint-0%20errors-green)
 ![A11y](https://img.shields.io/badge/axe-0%20critical%20violations-brightgreen)
-![Lighthouse](https://img.shields.io/badge/Lighthouse-A11y%2FSEO%2FBP%20100-success)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-A11y%2FSEO%20100-success)
 
 > Site de agência nível Awwwards: smooth scroll, cursor custom, marquee, preloader e WebGL leve.
 > Pilar **Showcase** · Semana 2 do roadmap · Milestone `m1-atelier-north` · Demo pública no GitHub Pages.
@@ -95,15 +95,15 @@ O app funciona sem backend: os dados vêm de APIs públicas (JSONPlaceholder, Pi
 | Métrica | Resultado |
 |---------|-----------|
 | **Unit tests (Vitest)** | 69/69 passando (22 arquivos) |
-| **Cobertura** | 74,8% statements · 75,6% branches · 71,8% lines |
+| **Cobertura** | 72,5% statements · 72,2% branches · 69,1% lines |
 | **E2E (Playwright)** | 12/12 passando (smoke, axe, screenshots) |
 | **Acessibilidade (axe)** | 0 violações graves/críticas nas 4 páginas |
-| **Lighthouse** | Performance **71** · A11y **100** · Best Practices **100** · SEO **100** |
+| **Lighthouse** | Performance **70** · A11y **100** · Best Practices **96** · SEO **100** |
 | **ESLint** | 0 erros · 0 warnings |
-| **Bundle inicial** | 459 kB (≈133 kB transfer) |
+| **Bundle inicial** | 460 kB (≈133 kB transfer) |
 | **Responsivo** | mobile (390) / desktop (1440) |
 
-> Perf 71 é trade-off consciente: GSAP + Lenis custam ~300 ms de JS para entregar a sensação Awwwards. Otimizado com WebP no hero, `fetchpriority="high"` e fontes assíncronas. A meta de perf ≥ 90 fica para a fase de performance do roadmap (Semana 10).
+> Perf 70 é trade-off consciente: GSAP + Lenis custam ~300 ms de JS para entregar a sensação Awwwards. Otimizado com WebP no hero, `fetchpriority="high"` e fontes assíncronas. A meta de perf ≥ 90 fica para a fase de performance do roadmap (Semana 10).
 
 ---
 
@@ -115,6 +115,14 @@ Varredura automatizada com `@axe-core/playwright` (tags WCAG 2.0/2.1 A+AA) nas q
 - Textos decorativos com `aria-hidden` + conteúdo real em `sr-only`; slides do showcase alternam `aria-hidden` conforme o progresso real.
 - Contraste pensado (`cream/70–80` sobre `ink`) e foco visível em `acid`.
 - Relatório versionado em [`docs/a11y/relatorio-axe.json`](./docs/a11y/relatorio-axe.json). Reproduzir: `npm run e2e:a11y`.
+
+---
+
+## SEO & AI discovery
+
+- `public/robots.txt` e `public/sitemap.xml` servidos como arquivos estáticos (não caem no fallback SPA).
+- `public/llms.txt` e `public/ai-catalog.json` (+ `public/.well-known/ai-catalog.json`): descoberta por LLMs/agentes.
+- `index.html` com `description`, Open Graph e `theme-color`.
 
 ---
 
